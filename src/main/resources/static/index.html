@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Football Transfer Radar</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main class="page">
+        <section class="hero">
+            <p class="eyebrow">Spring Boot + Jsoup + Transfermarkt</p>
+            <h1>Football Transfer Radar</h1>
+            <p class="subtitle">
+                Live player market values are crawled from football HTML, converted into Java objects,
+                ranked as a transfer watchlist, then displayed without static JSON.
+            </p>
+            <div class="actions">
+                <button id="refreshButton">Refresh player values</button>
+                <span id="status">Ready</span>
+            </div>
+        </section>
+
+        <section class="metrics" aria-label="Crawler metrics">
+            <div>
+                <span class="metric-label">Extracted nodes</span>
+                <strong id="extractedNodes">--</strong>
+            </div>
+            <div>
+                <span class="metric-label">Required minimum</span>
+                <strong id="requiredNodes">50</strong>
+            </div>
+            <div>
+                <span class="metric-label">Algorithm</span>
+                <strong>Insertion sort</strong>
+            </div>
+        </section>
+
+        <section class="table-shell">
+            <div class="table-heading">
+                <div>
+                    <h2>Transfer watchlist</h2>
+                    <p id="sourceLine">Source: waiting for first crawl</p>
+                </div>
+                <p id="generatedAt"></p>
+            </div>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Type</th>
+                            <th>Player</th>
+                            <th>Position</th>
+                            <th>Market value</th>
+                            <th>Current club</th>
+                            <th>Transfer signal</th>
+                            <th>Impact</th>
+                        </tr>
+                    </thead>
+                    <tbody id="transferBody">
+                        <tr>
+                            <td colspan="8" class="empty">Click refresh to crawl at least 50 live player-value nodes.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+    <script src="app.js"></script>
+</body>
+</html>
